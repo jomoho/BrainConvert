@@ -12,7 +12,28 @@ public class Config {
 	public String[] emotions;
 	private HashSet<String> classes;
 	private String prefix;
-	public static final String[] attributes= {
+	
+	public static final String[] columns= {
+			"excitement",
+			"engagementBoredom",
+			"frustration",
+			"smile",
+			"laugh",
+			"clench"};
+	
+	public static final String[] attributes = {
+			"excitement",
+			"engagement",
+			"frustration",
+			"smile",
+			"laugh",
+			"clench",
+			"globalExcitement",
+			"globalEngagement",
+			"globalFrustration"
+			};
+	
+	public static final String[] columnsSmooth= {
 			"excitement",
 			"engagementBoredom",
 			"frustration",
