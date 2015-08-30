@@ -12,6 +12,14 @@ public class Config {
 	public String[] emotions;
 	private HashSet<String> classes;
 	private String prefix;
+	public static final String[] attributes= {
+			"excitement",
+			"engagementBoredom",
+			"frustration",
+			"smile",
+			"laugh",
+			"clench"};
+	
 	public String getPrefix() {
 		return prefix;
 	}
@@ -57,5 +65,8 @@ public class Config {
 			e.printStackTrace();
 		}
 		
+	}
+	public String[] getAttributes() {
+		return attributes;
 	}
 }
