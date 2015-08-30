@@ -15,6 +15,12 @@ import flanagan.analysis.Stat;
 
 /**
  * @author moritz
+ * This Class takes a .csv logfile and stores all the values into a hashmap
+ * with the column names being the keys and the columns being double arrays.
+ * it assumes a "timestamp column for timing"
+ * 
+ * It provides methods to extract slices based on a timeframe.
+ * And also methods to calculate the mean of a specific timeframe
  *
  */
 public class Extractor {
