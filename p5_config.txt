@@ -1,0 +1,10 @@
+p5
+relaxed
+relaxed
+amused
+neutral
+angry
+relaxed
+relaxed
+amused
+amused

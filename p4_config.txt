@@ -1,10 +1,10 @@
-p1
-neutral
-amused
-amused
-angry
-angry
+p4
 relaxed
-relaxed
+amused
 angry
 sad
+angry
+amused
+sad
+relaxed
+relaxed
