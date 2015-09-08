@@ -29,7 +29,7 @@ public class ConvertMain {
 				double[] d = new double[Config.attributes.length];
 				
 				for(int j = 0; j < Config.columns.length; j++){
-					d[j] = e.getMidPoint(Config.columns[j], t, chunksize);
+					d[j] = e.getLinearRegression(Config.columns[j], t, chunksize);
 				}
 				
 				d[Config.columns.length] = globalExcitement;

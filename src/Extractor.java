@@ -7,6 +7,8 @@ import java.util.HashMap;
 
 import flanagan.analysis.CurveSmooth;
 import flanagan.analysis.Stat;
+import flanagan.analysis.Regression;
+
 
 /**
  * 
@@ -102,6 +104,26 @@ public class Extractor {
 	public double getMidPoint(String col, double offTime, double lengthTime){		
 		return getMean(col, offTime, lengthTime);
 	}
+	
+	public double getLinearRegression(String col, double offTime, double lengthTime){		
+		double[] slice = getSlice(col,offTime,lengthTime); 
+		double[] timeX=new double [slice.length];
+		double[] resultY=new double [slice.length];
+		if(slice.length>1){
+			for (int i=0; i<slice.length; i++){
+			timeX[i]=i;
+		}
+        Regression reg = new Regression(timeX,slice);
+        reg.linear();
+		resultY= reg.getYcalc();
+		return resultY[slice.length/2];
+
+		}
+		else{
+			return getMean(col, offTime, lengthTime);
+		}
+	}
+	
 
 	public double getMean(String col, double offTime, double lengthTime){
 		double[] slice = getSlice(col,offTime,lengthTime); 
