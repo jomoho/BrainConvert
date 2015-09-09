@@ -28,15 +28,23 @@ public class Config {
 			"smile",
 			"laugh",
 			"clench",
-			"globalExcitement",
-			"globalEngagement",
-			"globalFrustration"
+			"minExcitement",
+			"minEngagement",
+			"minFrustration",
+			"maxExcitement",
+			"maxEngagement",
+			"maxFrustration",
+			"MeanExcitement",
+			"MeanEngagement",
+			"MeanFrustration"			
 			};
 	
 	public static final String[] columnsSmooth= {
 			"excitement",
 			"engagementBoredom",
-			"frustration",
+			"frustration"};
+	
+	public static final String[] columnsActivate= {
 			"smile",
 			"laugh",
 			"clench"};

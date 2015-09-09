@@ -101,22 +101,44 @@ public class Extractor {
 		}
 	}
 	
+	public void scale(String column, double fac){
+		double [] c = values.get(column);
+		
+		for(int i = 0; i < c.length; i++){
+			c[i]*= fac;
+		}		
+		values.put(column, c);
+	}
+	
+	public void activate(String column, double threshhold){
+		double [] c = values.get(column);
+		
+		for(int i = 0; i < c.length; i++){
+			if(c[i] < threshhold){
+				c[i]=0;
+			}else{
+				c[i] = 1.0;
+			}
+		}		
+		values.put(column, c);
+	}
+	
 	public double getMidPoint(String col, double offTime, double lengthTime){		
 		return getMean(col, offTime, lengthTime);
 	}
 	
 	public double getLinearRegression(String col, double offTime, double lengthTime){		
 		double[] slice = getSlice(col,offTime,lengthTime); 
-		double[] timeX=new double [slice.length];
+		double[] timeX=getSlice("timestamp",offTime,lengthTime);
 		double[] resultY=new double [slice.length];
 		if(slice.length>1){
 			for (int i=0; i<slice.length; i++){
-			timeX[i]=i;
-		}
-        Regression reg = new Regression(timeX,slice);
-        reg.linear();
-		resultY= reg.getYcalc();
-		return resultY[slice.length/2];
+				timeX[i]=i;
+			}
+	        Regression reg = new Regression(timeX,slice);
+	        reg.linear();
+			resultY= reg.getYcalc();
+			return resultY[slice.length/2];
 
 		}
 		else{
@@ -153,7 +175,6 @@ public class Extractor {
 	}
 	
 	public double[] getSlice(String col,  double offTime, double lengthTime){
-
 		System.out.println("getSlice: " + col + " off:"+ offTime + " lenT: " + lengthTime);
 		//calculate indices based on timestamps
 		double [] t = values.get("timestamp");
@@ -183,5 +204,72 @@ public class Extractor {
 		System.out.println(s);
 		return ret;
 	}
+	
+	public double[] getDeriv(String col, double offTime, double lengthTime){
 
+		double[] slice = getSlice(col,offTime,lengthTime);
+		if(slice.length <= 1){
+			return new double[1];
+		}
+		double[] deriv = new double[slice.length-1];
+		
+		for(int i= 0; i < deriv.length; i ++){
+			deriv[i] = (slice[i+1]-slice[i])*10000.0;
+			if(deriv[i] < 0.00001){
+				deriv[i]=0;
+			}
+		}
+		return deriv;
+	}
+	
+	public double getMin(String col, double offTime, double lengthTime){
+		double[] slice =getSlice(col,offTime,lengthTime); 
+		Stat mean = new Stat(slice);
+		
+		double r = mean.getMinimum();
+		Double d = new Double(r);
+		if(d.isNaN()){
+			System.out.println("NaN warning: "+ col);
+			r=0;
+		}
+		return r;
+	}
+	public double getMax(String col, double offTime, double lengthTime){
+		double[] slice =getSlice(col,offTime,lengthTime); 
+		Stat mean = new Stat(slice);
+		
+		double r = mean.getMaximum();
+		Double d = new Double(r);
+		if(d.isNaN()){
+			System.out.println("NaN warning: "+ col);
+			r=0;
+		}
+		return r;
+	}
+	
+	public double getSum(String col, double offTime, double lengthTime){
+		double[] slice =getSlice(col,offTime,lengthTime); 
+		Stat mean = new Stat(slice);
+		
+		double r = mean.getSum();
+		Double d = new Double(r);
+		if(d.isNaN()){
+			System.out.println("NaN warning: "+ col);
+			r=0;
+		}
+		return r;
+	}
+	
+	public double getMaxDeriv(String col, double offTime, double lengthTime){
+		double[] slice =getSlice(col,offTime,lengthTime); 
+		Stat mean = new Stat(slice);
+		
+		double r = mean.getProduct();
+		Double d = new Double(r);
+		if(d.isNaN()){
+			System.out.println("NaN warning: "+ col);
+			r=0;
+		}
+		return r;
+	}
 }
