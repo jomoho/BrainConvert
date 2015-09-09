@@ -11,8 +11,11 @@ public class ConvertMain {
 		System.out.println(args[0]+" ");
 		Config config = new Config(args[0]);
 
-		ArffWriter arff = new ArffWriter(config);		
+		ArffWriter arff = new ArffWriter(config);	
+		CsvWriter csv = new CsvWriter(config);
 		arff.writeHeader();
+		csv.writeHeader();
+		
 		for(int i =0; i < config.files.length; ++i){
 			Extractor e = new Extractor(config.files[i]);
 			/*
@@ -56,9 +59,11 @@ public class ConvertMain {
 				d[Config.columns.length+8] = e.getMean(Config.columns[2], t, chunksize);
 				
 				arff.writeData(d, config.emotions[i]);
+				csv.writeData(d, config.emotions[i]);
 			}			
 		}		
 		arff.close();
+		csv.close();
 	}
 
 }

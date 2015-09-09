@@ -21,7 +21,7 @@ import flanagan.analysis.Regression;
  * it assumes a "timestamp column for timing"
  * 
  * It provides methods to extract slices based on a timeframe.
- * And also methods to calculate the mean of a specific timeframe
+ * And also methods to calculate the middle point of the regression line of a specific timeframe
  *
  */
 public class Extractor {
@@ -131,7 +131,7 @@ public class Extractor {
 		double[] slice = getSlice(col,offTime,lengthTime); 
 		double[] timeX=getSlice("timestamp",offTime,lengthTime);
 		double[] resultY=new double [slice.length];
-		if(slice.length>1){
+		if(slice.length>2){
 			for (int i=0; i<slice.length; i++){
 				timeX[i]=i;
 			}
@@ -139,7 +139,6 @@ public class Extractor {
 	        reg.linear();
 			resultY= reg.getYcalc();
 			return resultY[slice.length/2];
-
 		}
 		else{
 			return getMean(col, offTime, lengthTime);
