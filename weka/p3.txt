@@ -1,0 +1,64 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.RandomForest -I 100 -K 0 -S 1
+Relation:     p3
+Instances:    260
+Attributes:   16
+              excitement
+              engagement
+              frustration
+              smile
+              laugh
+              clench
+              minExcitement
+              minEngagement
+              minFrustration
+              maxExcitement
+              maxEngagement
+              maxFrustration
+              MeanExcitement
+              MeanEngagement
+              MeanFrustration
+              class
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Random forest of 100 trees, each constructed while considering 4 random features.
+Out of bag error: 0.3615
+
+
+
+Time taken to build model: 0.15 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         174               66.9231 %
+Incorrectly Classified Instances        86               33.0769 %
+Kappa statistic                          0.5555
+Mean absolute error                      0.2328
+Root mean squared error                  0.3298
+Relative absolute error                 62.3809 %
+Root relative squared error             76.3382 %
+Total Number of Instances              260     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.738     0.103      0.706     0.738     0.722      0.914    relaxed
+                 0.714     0.142      0.679     0.714     0.696      0.89     amused
+                 0.625     0.128      0.615     0.625     0.62       0.877    sad
+                 0.574     0.073      0.674     0.574     0.62       0.902    angry
+Weighted Avg.    0.669     0.114      0.669     0.669     0.668      0.895
+
+=== Confusion Matrix ===
+
+  a  b  c  d   <-- classified as
+ 48  4 11  2 |  a = relaxed
+  6 55  6 10 |  b = amused
+ 13  8 40  3 |  c = sad
+  1 14  8 31 |  d = angry
+
+
+

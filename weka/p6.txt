@@ -1,0 +1,63 @@
+=== Run information ===
+
+Scheme:weka.classifiers.trees.RandomForest -I 100 -K 0 -S 1
+Relation:     p6
+Instances:    257
+Attributes:   16
+              excitement
+              engagement
+              frustration
+              smile
+              laugh
+              clench
+              minExcitement
+              minEngagement
+              minFrustration
+              maxExcitement
+              maxEngagement
+              maxFrustration
+              MeanExcitement
+              MeanEngagement
+              MeanFrustration
+              class
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Random forest of 100 trees, each constructed while considering 4 random features.
+Out of bag error: 0.1673
+
+
+
+Time taken to build model: 0.11 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         214               83.2685 %
+Incorrectly Classified Instances        43               16.7315 %
+Kappa statistic                          0.735 
+Mean absolute error                      0.1344
+Root mean squared error                  0.246 
+Relative absolute error                 42.5569 %
+Root relative squared error             62.0036 %
+Total Number of Instances              257     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.895     0.081      0.922     0.895     0.908      0.959    relaxed
+                 0.8       0.009      0.923     0.8       0.857      0.987    amused
+                 0.811     0.115      0.741     0.811     0.774      0.938    sad
+                 0.55      0.042      0.524     0.55      0.537      0.954    angry
+Weighted Avg.    0.833     0.079      0.839     0.833     0.835      0.956
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 119   1   9   4 |   a = relaxed
+   2  24   4   0 |   b = amused
+   7   1  60   6 |   c = sad
+   1   0   8  11 |   d = angry
+
+

@@ -34,7 +34,7 @@ public class ConvertMain {
 
 			//iterate through data and generate midpoints
 			double chunksize = 3;
-			for(double t = e.getDuration()/2; t < e.getDuration(); t += chunksize){
+			for(double t = e.getDuration()/2; t < (e.getDuration() - chunksize); t += chunksize){
 				
 				double[] d = new double[Config.attributes.length];
 				
