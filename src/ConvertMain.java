@@ -58,6 +58,11 @@ public class ConvertMain {
 				d[Config.columns.length+7] = e.getMean(Config.columns[1], t, chunksize);
 				d[Config.columns.length+8] = e.getMean(Config.columns[2], t, chunksize);
 				
+				d[Config.columns.length+9] = e.getStandardDeviation(Config.columns[0], t, chunksize);
+				d[Config.columns.length+10] = e.getStandardDeviation(Config.columns[1], t, chunksize);
+				d[Config.columns.length+11] = e.getStandardDeviation(Config.columns[2], t, chunksize);
+				
+				d[Config.columns.length+12] = d[Config.columns.length+8]/d[Config.columns.length+6];
 				arff.writeData(d, config.emotions[i]);
 				csv.writeData(d, config.emotions[i]);
 			}			

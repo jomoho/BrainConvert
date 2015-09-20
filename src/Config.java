@@ -36,7 +36,11 @@ public class Config {
 			"maxFrustration",
 			"MeanExcitement",
 			"MeanEngagement",
-			"MeanFrustration"			
+			"MeanFrustration",
+			"devExcitement",
+			"devEngagement",
+			"devFrustration",
+			"ExcitementToFrustration"
 			};
 	
 	public static final String[] columnsSmooth= {

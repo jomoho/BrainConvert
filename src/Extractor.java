@@ -144,13 +144,26 @@ public class Extractor {
 			return getMean(col, offTime, lengthTime);
 		}
 	}
-	
+
 
 	public double getMean(String col, double offTime, double lengthTime){
 		double[] slice = getSlice(col,offTime,lengthTime); 
 		Stat mean = new Stat(slice);
 		
 		double r = mean.geometricMean();
+		Double d = new Double(r);
+		if(d.isNaN()){
+			System.out.println("NaN warning: "+ col);
+			r=0;
+		}
+		return r;
+	}
+
+	public double getStandardDeviation(String col, double offTime, double lengthTime){
+		double[] slice = getSlice(col,offTime,lengthTime); 
+		Stat dev = new Stat(slice);
+		
+		double r = dev.standardDeviation();
 		Double d = new Double(r);
 		if(d.isNaN()){
 			System.out.println("NaN warning: "+ col);
